@@ -1,4 +1,4 @@
-package com.midohegazi.mido_beer_service.controller;
+package com.midohegazi.mido_beer_service.web.controller;
 
 import com.midohegazi.mido_beer_service.web.model.BeerDTO;
 import org.springframework.http.HttpStatus;
@@ -12,9 +12,12 @@ import java.util.UUID;
 public class BeerController {
 
     @GetMapping("/{beerId}")
-    public ResponseEntity<BeerDTO> getBearById(@PathVariable ("beerId")UUID bearId){
-        //todo impl
-        return new ResponseEntity<>(BeerDTO.builder().build(), HttpStatus.OK);
+    public ResponseEntity<BeerDTO> getBeerById(@PathVariable ("beerId")UUID beerId){
+        BeerDTO beerDTO = new BeerDTO();
+        beerDTO.setId(beerId);
+        beerDTO.setBeerName("MidoBear");
+        beerDTO.setVersion(2024);
+        return new ResponseEntity<>(beerDTO, HttpStatus.OK);
     }
 
     @PostMapping
